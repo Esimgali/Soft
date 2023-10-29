@@ -18,7 +18,5 @@ public class Main {
         inter = new ImprovedAudioSystem(inter, 900, "Bose");
         ProviderVolvo volvo = new ProviderVolvo(new DieselEngine(350, 1500),new DiscBrakes(15));
         ProviderTesla tesla = new ProviderTesla(new ElectricMotor(250, 1200), new DiscBrakes(4));
-        AdapterProviderTesla adaptedTesla = new AdapterProviderTesla(tesla);
-        tesla.creatNewCar( new Cars(new ElectricMotor(adaptedTesla.getEngineHorsepower(), adaptedTesla.getMaximumMileage()),new DiscBrakes(adaptedTesla.getBrakesRadius()), inter), "bmw");
-    }
+        AdapterProviderTesla adaptedTesla = new AdapterProviderTesla(tesla); }
 }
