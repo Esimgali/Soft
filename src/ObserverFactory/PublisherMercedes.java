@@ -78,7 +78,7 @@ public class PublisherMercedes implements PublisherCar{
         try (ResultSet users = base.statement.executeQuery("SELECT * FROM users")) {
             while (users.next()) {
                 String[] subscribes;
-                if(users.getString(6) != null){
+                if(users.getString(6) == null){
                     continue;
                 }
                 else if(users.getString(6).contains(", ")){
