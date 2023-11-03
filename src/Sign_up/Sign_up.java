@@ -24,9 +24,9 @@ public class Sign_up {
                 " values (?,?,?,?,?,?)");
         preparedStatement.setInt(1, maxId + 1);
         preparedStatement.setString(2, username);
-        preparedStatement.setString(5, usersurname);
-        preparedStatement.setString(3, useremail);
-        preparedStatement.setString(4, userphonenumber);
+        preparedStatement.setString(3, usersurname);
+        preparedStatement.setString(4, useremail);
+        preparedStatement.setString(5, userphonenumber);
         preparedStatement.setString(6, shippingmethod);
         preparedStatement.executeUpdate();
     }

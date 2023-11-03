@@ -7,11 +7,12 @@ public class Cars{
     IEngineStrategy engine;
     IBrakesStrategy brakes;
     CarInterior decor;
-    public Cars(IEngineStrategy engine, IBrakesStrategy brakes, CarInterior decor){
+    String type;
+    public Cars(IEngineStrategy engine, IBrakesStrategy brakes, CarInterior decor, String type){
         this.engine = engine;
         this.brakes = brakes;
         this.decor = decor;
-
+        this.type = type;
     }
     public String getEngine(){
         return engine.engine();

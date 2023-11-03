@@ -1,21 +1,20 @@
 package Strategy;
 
 import DataBase.Database;
-import Factory.SentEmail;
-import Factory.SentNotification;
-import Factory.SentPhoneNumber;
+import ObserverFactory.*;
 
 import java.lang.reflect.InvocationTargetException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProviderVolvo implements CarProvider{
     IEngineStrategy engine;
     IBrakesStrategy brakes;
+    PublisherVolvo volvo;
     public ProviderVolvo(IEngineStrategy engine, IBrakesStrategy brakes) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.brakes = brakes;
         this.engine = engine;
-        notifyClients();
+        this.volvo = new PublisherVolvo();
+        volvo.notifyClients();
     }
     @Override
     public double getBrakesRadius() {
@@ -32,27 +31,5 @@ public class ProviderVolvo implements CarProvider{
         return engine.getMaximumMileage();
     }
     Database base = new Database();
-    public void notifyClients(){
-        try (ResultSet users = base.statement.executeQuery("SELECT * FROM users")) {
-            while (users.next()) {
-                String[] subscribes = users.getString(6).split(", ");
-                for(String sub : subscribes){
-                    if(sub.contains("bmw")){
-                        SentNotification sent;
-                        if(users.getString(7).equals("phoneNumber")){
-                            sent = new SentPhoneNumber();
-                        }
-                        else{
-                            sent = new SentEmail();
-                        }
-                        sent.sentMassage( users.getString(1));
-                        break;
-                    }
-                }
 
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 }
