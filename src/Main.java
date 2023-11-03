@@ -3,6 +3,7 @@ import Decorator.CarInterior;
 import Decorator.ImprovedAudioSystem;
 import Decorator.Interior;
 import Decorator.Tinting;
+import ObserverFactory.Publisher;
 import Strategy.*;
 import User.*;
 
@@ -11,13 +12,13 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        CarInterior inter = new Interior(500, "Default mers interior");
-        inter = new Tinting(inter,100,"" );
-        inter = new ImprovedAudioSystem(inter, 900, "Bose");
-        ProviderVolvo volvo = new ProviderVolvo(new DieselEngine(350, 1500),new DiscBrakes(15));
-        ProviderTesla tesla = new ProviderTesla(new ElectricMotor(250, 1200), new DiscBrakes(4));
-        AdapterProviderTesla adaptedTesla = new AdapterProviderTesla(tesla);
-        RootUser rootUser = RootUser.getInstance();
 
+//        ProviderTesla tesla = new ProviderTesla(new ElectricMotor(250, 1200), new DiscBrakes(4), inter);
+//        AdapterProviderTesla adaptedTesla = new AdapterProviderTesla(tesla);
+//        RootUser rootUser = RootUser.getInstance();
+        //User user = new User("Esimgali", "Khamitov", "esimgali@gamil.com","82568989", "phone");
+        RootUser rootUser = RootUser.getInstance();
+        Publisher pb = new Publisher();
+        pb.unsubscribe("Esimgali", "volvo");
     }
 }

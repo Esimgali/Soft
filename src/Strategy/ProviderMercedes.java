@@ -1,6 +1,6 @@
 package Strategy;
 
-import DataBase.Database;
+import Decorator.CarInterior;
 import ObserverFactory.*;
 
 import java.lang.reflect.InvocationTargetException;
@@ -10,11 +10,13 @@ public class ProviderMercedes implements CarProvider{
     IEngineStrategy engine;
     IBrakesStrategy brakes;
     PublisherMercedes mercedes;
-    public ProviderMercedes(IEngineStrategy engine, IBrakesStrategy brakes) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    CarInterior inter;
+    public ProviderMercedes(IEngineStrategy engine, IBrakesStrategy brakes, CarInterior inter) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.brakes = brakes;
         this.engine = engine;
+        this.inter = inter;
         this.mercedes = new PublisherMercedes();
-        mercedes.notifyClients();
+        mercedes.notifyClients(getBrakesRadius(), getEngineHorsepower(), getMaximumMileage(), getDescription());
     }
     @Override
     public double getBrakesRadius() {
@@ -30,6 +32,8 @@ public class ProviderMercedes implements CarProvider{
     public double getMaximumMileage() {
         return engine.getMaximumMileage();
     }
-    Database base = new Database();
+    public  String getDescription(){
+        return inter.getDescription();
+    };
 
 }

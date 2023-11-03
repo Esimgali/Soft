@@ -5,5 +5,5 @@ public interface PublisherCar {
 
     void subscribe(String name);
 
-    public void notifyClients();
+    public void notifyClients(double brakesRadius, int engineHorsepower, double maximumMileage, String description);
 }

@@ -13,12 +13,16 @@ public class Publisher {
         switch (type){
             case ("tesla"):
                 car = new PublisherTesla();
+                break;
             case ("volvo"):
                 car = new PublisherVolvo();
+                break;
             case ("mercedes"):
                 car = new PublisherMercedes();
+                break;
             case ("bmw"):
                 car = new PublisherBMW();
+                break;
         }
         car.subscribe(username);
     }
@@ -26,12 +30,16 @@ public class Publisher {
         switch (type){
             case ("tesla"):
                 car = new PublisherTesla();
+                break;
             case ("volvo"):
                 car = new PublisherVolvo();
+                break;
             case ("mercedes"):
                 car = new PublisherMercedes();
+                break;
             case ("bmw"):
                 car = new PublisherBMW();
+                break;
         }
         car.unsubscribe(username);
     }
