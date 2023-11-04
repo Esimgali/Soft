@@ -15,8 +15,6 @@ public class ProviderBMW implements CarProvider{
         this.brakes = brakes;
         this.engine = engine;
         this.inter = inter;
-        this.bmw = new PublisherBMW();
-        bmw.notifyClients(getBrakesRadius(), getEngineHorsepower(), getMaximumMileage(), getDescription());
     }
     @Override
     public double getBrakesRadius() {

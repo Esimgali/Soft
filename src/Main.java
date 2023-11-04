@@ -15,6 +15,7 @@ public class Main {
         inter = new ImprovedAudioSystem(inter, 89, "bosh");
         ProviderTesla tesla = new ProviderTesla(new ElectricMotor(250, 1200), new DiscBrakes(4), inter);
         AdapterProviderTesla adaptedTesla = new AdapterProviderTesla(tesla);
+        Cars newTesla = new Cars(adaptedTesla, "tesla");
         RootUser rootUser = RootUser.getInstance();
         //User user = new User("Esimgali", "Khamitov", "esimgali@gamil.com","82568989", "phone");
         Publisher pb = new Publisher();

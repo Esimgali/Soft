@@ -12,13 +12,10 @@ public class ProviderTesla implements CarProvider{
     IEngineStrategy engine;
     IBrakesStrategy brakes;
     CarInterior inter;
-    PublisherTesla tesla;
     public ProviderTesla(IEngineStrategy engine, IBrakesStrategy brakes, CarInterior inter) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.brakes = brakes;
         this.engine = engine;
         this.inter = inter;
-        this.tesla = new PublisherTesla();
-        tesla.notifyClients(getBrakesRadius(), getEngineHorsepower(), getMaximumMileage(), getDescription());
     }
     @Override
     public double getBrakesRadius() {

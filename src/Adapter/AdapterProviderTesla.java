@@ -22,4 +22,8 @@ public class AdapterProviderTesla implements CarProvider {
     public double getMaximumMileage() {
         return tesla.getMaximumMileage() * 1.6;
     }
+    @Override
+    public String getDescription(){
+        return tesla.getDescription();
+    }
 }

@@ -2,32 +2,36 @@ package Strategy;
 
 import Decorator.CarInterior;
 import Decorator.Interior;
+import ObserverFactory.*;
+
+import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 
 public class Cars{
-    IEngineStrategy engine;
-    IBrakesStrategy brakes;
-    CarInterior decor;
+    CarProvider carProvider;
+    PublisherCar publisher;
     String type;
-    public Cars(IEngineStrategy engine, IBrakesStrategy brakes, CarInterior decor, String type){
-        this.engine = engine;
-        this.brakes = brakes;
-        this.decor = decor;
+    public Cars(CarProvider carProvider, String type) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         this.type = type;
+        this.carProvider = carProvider;
+        notify(type);
     }
-    public String getEngine(){
-        return engine.engine();
-    }
-    public double getBrakesRadius() {
-        return brakes.getBrakesRadius();
-    }
-
-
-    public int getEngineHorsepower() {
-        return engine.getHorsepower();
-    }
-
-
-    public double getMaximumMileage() {
-        return engine.getMaximumMileage();
+    public void notify(String type) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        switch (type){
+            case "tesla":
+                publisher = new PublisherTesla();
+                break;
+            case "bmw":
+                publisher = new PublisherBMW();
+                break;
+            case "mercedes" :
+                publisher = new PublisherMercedes();
+                break;
+            case "volvo" :
+                publisher = new PublisherVolvo();
+                break;
+        }
+        publisher.notifyClients(carProvider.getBrakesRadius(),carProvider.getEngineHorsepower(),
+                carProvider.getMaximumMileage(), carProvider.getDescription());
     }
 }
