@@ -5,7 +5,7 @@ import Decorator.CarInterior;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 
-public class ProviderMercedes implements CarProvider{
+public class ProviderMercedes implements CarProvider {
     IEngineStrategy engine;
     IBrakesStrategy brakes;
     CarInterior inter;

@@ -1,5 +1,6 @@
 import Adapter.AdapterProviderTesla;
 import Decorator.*;
+import FactoryMethod.CreateProvider;
 import ObserverFactory.Publisher;
 import Strategy.*;
 import User.*;
@@ -13,7 +14,8 @@ public class Main {
         inter = new Tinting(inter, 54, "");
         inter = new MultifunctionSteeringWheel(inter, 45, "");
         inter = new ImprovedAudioSystem(inter, 89, "bosh");
-        ProviderTesla tesla = new ProviderTesla(new ElectricMotor(250, 1200), new DiscBrakes(4), inter);
+        CreateProvider creator = new CreateProvider();
+        CarProvider tesla =  creator.createProvider(new ElectricMotor(250, 1200), new DiscBrakes(4), inter, "tesla");
         AdapterProviderTesla adaptedTesla = new AdapterProviderTesla(tesla);
         Cars newTesla = new Cars(adaptedTesla, "tesla");
         RootUser rootUser = RootUser.getInstance();

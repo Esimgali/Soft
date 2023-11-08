@@ -4,8 +4,8 @@ import Strategy.CarProvider;
 import Strategy.ProviderTesla;
 
 public class AdapterProviderTesla implements CarProvider {
-    ProviderTesla tesla;
-    public AdapterProviderTesla(ProviderTesla tesla){
+    CarProvider tesla;
+    public AdapterProviderTesla(CarProvider tesla){
         this.tesla = tesla;
     }
     @Override
