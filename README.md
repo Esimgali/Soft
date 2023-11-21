@@ -38,7 +38,7 @@ This package includes various strategies for engines and brakes:
 
 ### Adapter
 
-The Adapter package includes AdapterProviderTesla class that adapts the CarProvider interface to work seamlessly with a ProviderTesla object. It achieves this adaptation by modifying the behavior of certain methods to match the expected interface.
+The Adapter package includes AdapterProviderTesla class that adapts the CarProvider interface to work seamlessly with a ProviderTesla object. It achieves this adaptation by modifying the behavior of certain methods to match the expected interface:
 
 -`getBrakesRadius()`: Adjusts the brakes radius based on the existing implementation.
 -`getEngineHorsepower()`: Retains the engine horsepower information without modification.
@@ -49,7 +49,7 @@ The purpose of this adapter is to make a ProviderTesla object compatible with th
 
 ### FactoryMethod
 
-The CreateProvider class in FactoryMethod package serves as a Factory Method responsible for creating instances of different car providers based on specified parameters. It follows the Factory Method design pattern, which provides an interface for creating objects but allows subclasses to alter the type of objects that will be created. In this context, the CreateProvider factory method generates instances of classes implementing the CarProvider interface.
+The CreateProvider class in FactoryMethod package serves as a Factory Method responsible for creating instances of different car providers based on specified parameters. It follows the Factory Method design pattern, which provides an interface for creating objects but allows subclasses to alter the type of objects that will be created. In this context, the CreateProvider factory method generates instances of classes implementing the CarProvider interface:
 
 -`createProvider(IEngineStrategy engine, IBrakesStrategy brakes, CarInterior inter, String type)`
 This method takes in various parameters representing the car's engine strategy, brakes strategy, interior decoration, and a type identifier. It then dynamically creates and returns an instance of a class implementing the CarProvider interface based on the specified type.
